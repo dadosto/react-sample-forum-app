@@ -15,6 +15,9 @@ class ForumAddAnswerBoxComponent extends React.Component {
   
   addAnswer() {
     this.props.onAddAnswer(this.state.value);
+    this.setState({
+      value: ''
+    });
   }
   
   onChange(event) {

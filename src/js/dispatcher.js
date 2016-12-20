@@ -1,5 +1,3 @@
-import ForumStore from './stores/ForumStore.js';
-
 class Dispatcher {
   
   constructor() {
@@ -26,20 +24,5 @@ class Dispatcher {
 }
 
 const ForumDispatcher = new Dispatcher();
-
-ForumDispatcher.register((action) => {
-  switch(action.actionType) {
-    case 'FORUM_ANSWER_ADDED': {
-      console.log('Answer added');
-      ForumStore.addAnswer(action.newAnswer);
-      break;
-    }
-    case 'FORUM_ANSWER_MARKED_CORRECT': {
-      console.log('Answer marked as correct: ', action.id);
-      ForumStore.markAsCorrect(action.id);
-      break;
-    }
-  }
-});
 
 export default ForumDispatcher;

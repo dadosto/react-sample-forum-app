@@ -1,4 +1,6 @@
 import EventEmitter from '../eventemitter.js';
+import ForumDispatcher from '../dispatcher.js';
+import ForumConstants from '../constants/ForumConstants.js';
 
 class Store extends EventEmitter {
   
@@ -51,5 +53,22 @@ class Store extends EventEmitter {
 }
 
 const ForumStore = new Store();
+
+console.log('ForumDispatcher = ', ForumDispatcher);
+
+ForumDispatcher.register((action) => {
+  switch(action.actionType) {
+    case ForumConstants.FORUM_ANSWER_ADDED: {
+      console.log('Answer added');
+      ForumStore.addAnswer(action.newAnswer);
+      break;
+    }
+    case ForumConstants.FORUM_ANSWER_MARKED_CORRECT: {
+      console.log('Answer marked as correct: ', action.id);
+      ForumStore.markAsCorrect(action.id);
+      break;
+    }
+  }
+});
 
 export default ForumStore;

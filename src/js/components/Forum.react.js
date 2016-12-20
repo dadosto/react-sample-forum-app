@@ -5,6 +5,7 @@ import ForumAnswersComponent from './ForumAnswers.react.js';
 import ForumAddAnswerBoxComponent from './ForumAddAnswerBox.react.js';
 import ForumDispatcher from '../dispatcher.js';
 import ForumStore from '../stores/ForumStore.js';
+import ForumActions from '../actions/ForumActions.js';
 
 class ForumComponent extends React.Component {
   
@@ -27,10 +28,7 @@ class ForumComponent extends React.Component {
   }
   
   onAddAnswer(answerText) {
-    ForumDispatcher.dispatch({
-      actionType: 'FORUM_ANSWER_ADDED',
-      newAnswer: answerText
-    });
+    ForumActions.addNewAnswer(answerText);
   }
   
   onChange() {
